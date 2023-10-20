@@ -17,10 +17,13 @@ namespace QuerUmLivro.Infra.Data.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        public void Alterar(T entidade)
+        public T Alterar(T entidade)
         {
+            
             _dbSet.Update(entidade);
             _context.SaveChanges();
+
+            return entidade;
         }
 
         public IEnumerable<T> Buscar(Expression<Func<T, bool>> predicate)
@@ -28,16 +31,22 @@ namespace QuerUmLivro.Infra.Data.Repositories
             return _dbSet.Where(predicate).ToList();
         }
 
-        public void Cadastrar(T entidade)
+        public T Cadastrar(T entidade)
         {
             _dbSet.Add(entidade);
             _context.SaveChanges();
+
+            return entidade;
         }
 
-        public void Deletar(int id)
+        public T Deletar(int id)
         {
-            _dbSet.Remove(ObterPorId(id));
+            var entidade = ObterPorId(id);
+
+            _dbSet.Remove(entidade);
             _context.SaveChanges();
+
+            return entidade;
         }
 
         public T ObterPorId(int id)

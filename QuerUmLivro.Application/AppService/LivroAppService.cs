@@ -1,39 +1,55 @@
-﻿using QuerUmLivro.Application.Interfaces;
+﻿using AutoMapper;
+using QuerUmLivro.Application.DTOs.Livro;
+using QuerUmLivro.Application.Interfaces;
 using QuerUmLivro.Domain.Entities;
-using System.Linq.Expressions;
+using QuerUmLivro.Domain.Interfaces.Services;
 
 namespace QuerUmLivro.Application.AppService
 {
     public class LivroAppService : ILivroAppService
     {
-        public void Alterar(Livro entidade)
+        private readonly ILivroService _livroService;
+        private readonly IMapper _mapper;
+
+        public LivroAppService(ILivroService livroService, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _livroService = livroService;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Livro> Buscar(Expression<Func<Livro, bool>> predicate)
+        public AlteraLivroDto Alterar(AlteraLivroDto alteraLivroDto)
         {
-            throw new NotImplementedException();
+            var livro = _mapper.Map<Livro>(alteraLivroDto);
+            
+            return _mapper.Map<AlteraLivroDto>(_livroService.Alterar(livro));
         }
 
-        public void Cadastrar(Livro entidade)
+        public LivroDto Cadastrar(LivroDto livroDto)
         {
-            throw new NotImplementedException();
+            var livro = _mapper.Map<Livro>(livroDto);
+
+            return _mapper.Map<LivroDto>(_livroService.Cadastrar(livro));
         }
 
-        public void Deletar(int id)
+        public LivroDto Deletar(int id)
         {
-            throw new NotImplementedException();
+            var livro = _livroService.Deletar(id);
+
+            return _mapper.Map<LivroDto>(livro);
         }
 
-        public Livro ObterPorId(int id)
+        public LivroDto ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            var livro = _livroService.ObterPorId(id);
+
+            return _mapper.Map<LivroDto>(livro);
         }
 
-        public IList<Livro> ObterTodos()
+        public IList<LivroDto> ObterTodos()
         {
-            throw new NotImplementedException();
+            var livros = _livroService.ObterTodos();
+
+            return _mapper.Map<List<LivroDto>>(livros);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Application.Interfaces;
-using QuerUmLivro.Domain.DTOs;
 
 namespace QuerUmLivro.API.Controllers
 {
@@ -16,26 +16,30 @@ namespace QuerUmLivro.API.Controllers
         }
 
         [HttpPost("cadastrar")]
-        public IActionResult Cadastrar(LivroDTO livroDTO)
+        public IActionResult Cadastrar(LivroDto livroDto)
         {
-            _livroAppService.Cadastrar(null);
+
+            _livroAppService.Cadastrar(livroDto);
 
             return Ok("Livro Cadastrado");
         }
-        [HttpPut("atualizar")]
-        public IActionResult Atualizar(LivroDTO livroDTO)
+        [HttpPut("alterar")]
+        public IActionResult Alterar(AlteraLivroDto alteraLivroDto)
         {
+            _livroAppService.Alterar(alteraLivroDto);
+
             return Ok("Livro Atualizado");
 
         }        
 
-        [HttpGet("obter-por-id")]
+        [HttpGet("obter-por-id/{id}")]
         public IActionResult ObterPorId([FromRoute] int id)
         {
             try
             {
+                var livroDto = _livroAppService.ObterPorId(id);
 
-                return Ok("Livro por ID");
+                return Ok(livroDto);
             }
             catch (Exception ex)
             {
@@ -50,8 +54,9 @@ namespace QuerUmLivro.API.Controllers
         {
             try
             {
-                
-                return Ok("Todos os livros");
+                var livrosDto = _livroAppService.ObterTodos();
+
+                return Ok(livrosDto);
             }
             catch (Exception ex)
             {
@@ -65,6 +70,8 @@ namespace QuerUmLivro.API.Controllers
         [HttpDelete("remover/{id}")]
         public IActionResult Remover([FromRoute] int id)
         {
+            _livroAppService.Deletar(id);
+
             return Ok("Livro Excluído");
         }
     }

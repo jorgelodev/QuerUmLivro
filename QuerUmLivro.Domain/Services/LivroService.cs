@@ -9,5 +9,6 @@ namespace QuerUmLivro.Domain.Services
         public LivroService(IRepositoryBase<Livro> repository) : base(repository)
         {
         }
+
     }
 }

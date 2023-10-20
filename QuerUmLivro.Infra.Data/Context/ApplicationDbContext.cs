@@ -6,13 +6,14 @@ namespace QuerUmLivro.Infra.Data.Context
 {
     public class ApplicationDbContext : DbContext
     {
-        private readonly IConfiguration _configuration;
 
-        public ApplicationDbContext(IConfiguration configuration)
+        public ApplicationDbContext()
+        { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
         {
-            _configuration = configuration;
+          
         }
-
         public DbSet<Livro> Livros { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

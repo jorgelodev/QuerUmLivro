@@ -1,6 +1,6 @@
-﻿namespace QuerUmLivro.Domain.DTOs
+﻿namespace QuerUmLivro.Application.DTOs.Livro
 {
-    public class LivroDTO
+    public class LivroDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }

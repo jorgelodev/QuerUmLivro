@@ -16,7 +16,7 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
         {
             // Application
             #region AppService
-            services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
+            //services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
 
             services.AddScoped<ILivroAppService, LivroAppService>();
 

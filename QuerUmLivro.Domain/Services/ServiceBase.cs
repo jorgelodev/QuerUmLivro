@@ -13,34 +13,34 @@ namespace QuerUmLivro.Domain.Services
             _repository = repository;
         }
 
-        public void Alterar(T entidade)
+        public T Alterar(T entidade)
         {
-            throw new NotImplementedException();
+            return _repository.Alterar(entidade);
         }
 
         public IEnumerable<T> Buscar(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _repository.Buscar(predicate);
         }
 
-        public void Cadastrar(T entidade)
+        public T Cadastrar(T entidade)
         {
-            throw new NotImplementedException();
+            return _repository.Cadastrar(entidade);
         }
 
-        public void Deletar(int id)
+        public T Deletar(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Deletar(id);
         }
 
         public T ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return _repository.ObterPorId(id);
         }
 
         public IList<T> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _repository.ObterTodos();
         }
     }
 }

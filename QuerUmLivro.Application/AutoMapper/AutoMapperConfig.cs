@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using QuerUmLivro.Domain.DTOs;
+using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Domain.Entities;
 
 namespace QuerUmLivro.Application.AutoMapper
@@ -10,7 +10,8 @@ namespace QuerUmLivro.Application.AutoMapper
         public AutoMapperConfig()
         {
             // DTOs
-            CreateMap<LivroDTO, Livro>().ReverseMap();            
+            CreateMap<Livro, LivroDto>().ReverseMap();            
+            CreateMap<Livro, AlteraLivroDto>().ReverseMap();           
           
         }
 

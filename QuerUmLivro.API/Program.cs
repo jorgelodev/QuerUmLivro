@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using QuerUmLivro.Application.AutoMapper;
+using QuerUmLivro.Infra.CrossCuttin.Mapper;
 using QuerUmLivro.Infra.CrossCutting.IoC;
 using QuerUmLivro.Infra.Data.Context;
 
@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 NativeInjectorBootStrapper.RegisterServices(builder.Services);
 
-AutoMapperConfig.RegisterServices(builder.Services);
+NativeMapperBootStrapper.RegisterServices(builder.Services);
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

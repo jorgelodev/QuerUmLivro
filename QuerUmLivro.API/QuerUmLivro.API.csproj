@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <!--<Nullable>enable</Nullable>-->
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuerUmLivro.Application\QuerUmLivro.Application.csproj" />
-    <ProjectReference Include="..\QuerUmLivro.Domain\QuerUmLivro.Domain.csproj" />
+    <ProjectReference Include="..\QuerUmLivro.Infra.CrossCuttin.Mapper\QuerUmLivro.Infra.CrossCuttin.Mapper.csproj" />
     <ProjectReference Include="..\QuerUmLivro.Infra.CrossCutting.IoC\QuerUmLivro.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\QuerUmLivro.Infra.Data\QuerUmLivro.Infra.Data.csproj" />
   </ItemGroup>

@@ -26,7 +26,7 @@ namespace QuerUmLivro.Application.AppService
 
         public LivroDto Cadastrar(LivroDto livroDto)
         {
-            var livro = _mapper.Map<Livro>(livroDto);
+            var livro = _mapper.Map<Livro>(livroDto);            
 
             return _mapper.Map<LivroDto>(_livroService.Cadastrar(livro));
         }

@@ -4,6 +4,6 @@
     {        
         public string Nome { get; set; }
         public int IdUsuario { get; set; }
-        public bool Disponivel { get; set; }
+        public bool Disponivel { get; set; }        
     }
 }

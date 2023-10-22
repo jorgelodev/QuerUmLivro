@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.Interfaces;
 using QuerUmLivro.Domain.Interfaces.Repositories;

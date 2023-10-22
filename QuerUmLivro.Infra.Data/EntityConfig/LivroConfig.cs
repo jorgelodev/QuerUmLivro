@@ -16,6 +16,9 @@ namespace QuerUmLivro.Infra.Data.EntityConfig
             builder.Property(p => p.Nome).HasColumnType("varchar(100)");
             builder.Property(p => p.IdUsuario);
             builder.Property(p => p.Disponivel);
+
+            builder.Ignore(c => c.ValidationResult);
+
             //builder.HasOne(p => p.Usuario)
             //    .WithMany(u => u.Pedidos)
             //    .HasPrincipalKey(u => u.Id);

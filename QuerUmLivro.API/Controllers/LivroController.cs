@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Application.Interfaces;
+using QuerUmLivro.Application.ViewModels.Livro;
 
 namespace QuerUmLivro.API.Controllers
 {
@@ -9,30 +11,36 @@ namespace QuerUmLivro.API.Controllers
     public class LivroController : ControllerBase
     {
         private readonly ILivroAppService _livroAppService;
+        private readonly IMapper _mapper;
 
-        public LivroController(ILivroAppService livroAppService)
+        public LivroController(ILivroAppService livroAppService, IMapper mapper)
         {
             _livroAppService = livroAppService;
+            _mapper = mapper;
         }
 
-        [HttpPost("cadastrar")]
-        public IActionResult Cadastrar(LivroDto livroDto)
+        [HttpPost]
+        public IActionResult Cadastrar(LivroViewModel livroViewModel)
         {
+            var livroCadastrado = _livroAppService.Cadastrar(_mapper.Map<LivroDto>(livroViewModel));
 
-            _livroAppService.Cadastrar(livroDto);
+            if (livroCadastrado.ValidationResult.IsValid)
 
-            return Ok("Livro Cadastrado");
+                return Ok(_mapper.Map<LivroViewModel>(livroCadastrado));
+            else
+                return BadRequest(livroCadastrado.ValidationResult.Errors);
         }
-        [HttpPut("alterar")]
+
+        [HttpPut]
         public IActionResult Alterar(AlteraLivroDto alteraLivroDto)
         {
             _livroAppService.Alterar(alteraLivroDto);
 
             return Ok("Livro Atualizado");
 
-        }        
+        }
 
-        [HttpGet("obter-por-id/{id}")]
+        [HttpGet("{id}")]
         public IActionResult ObterPorId([FromRoute] int id)
         {
             try
@@ -49,7 +57,7 @@ namespace QuerUmLivro.API.Controllers
 
             }
         }
-        [HttpGet("obter-todos")]
+        [HttpGet]
         public IActionResult ObterTodos()
         {
             try
@@ -67,7 +75,7 @@ namespace QuerUmLivro.API.Controllers
             }
         }
 
-        [HttpDelete("remover/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Remover([FromRoute] int id)
         {
             _livroAppService.Deletar(id);

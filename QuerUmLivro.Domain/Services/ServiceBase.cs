@@ -13,8 +13,9 @@ namespace QuerUmLivro.Domain.Services
             _repository = repository;
         }
 
-        public T Alterar(T entidade)
+        public virtual T Alterar(T entidade)
         {
+            
             return _repository.Alterar(entidade);
         }
 
@@ -23,12 +24,12 @@ namespace QuerUmLivro.Domain.Services
             return _repository.Buscar(predicate);
         }
 
-        public T Cadastrar(T entidade)
+        public virtual T Cadastrar(T entidade)
         {
             return _repository.Cadastrar(entidade);
         }
 
-        public T Deletar(int id)
+        public virtual T Deletar(int id)
         {
             return _repository.Deletar(id);
         }

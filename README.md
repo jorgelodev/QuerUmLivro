@@ -4,6 +4,10 @@ QuerUmLivro é um projeto desenvolvido como proposta para entrega do Tech Challe
 
 Ele oferece uma forma de possibilitar o cadastro de livros para doação, e os interessados pelos livros manifestem interesse nesses livros.
 
+## Critérios de Aceite
+
+Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link [link](./Levantamento de Requisitos.docx)
+
 ## Development 
 
 Para rodar esse projeto siga os passos abaixo:

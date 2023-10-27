@@ -103,7 +103,7 @@ namespace QuerUmLivro.API.Controllers
         /// Envia id do Doador para api.        
         /// 
         /// </remarks>
-        /// <response code="200">Retorna sucesso com uma lista com os livros encontrados, ou uma lista vazia cazo não encontre nenhum registro</response>        
+        /// <response code="200">Retorna sucesso com uma lista com os livros encontrados, ou uma lista vazia caso não encontre nenhum registro</response>        
         [HttpGet("livros-por-doador/{id}")]
         public IActionResult ObterTodosPorDoador([FromRoute] int id)
         {
@@ -121,7 +121,7 @@ namespace QuerUmLivro.API.Controllers
         /// Lista todos os livros que estão disponíveis para solicitar interesse.
         /// 
         /// </remarks>
-        /// <response code="200">Retorna sucesso com uma lista com os livros encontrados, ou uma lista vazia cazo não encontre nenhum registro</response>        
+        /// <response code="200">Retorna sucesso com uma lista com os livros encontrados, ou uma lista vazia caso não encontre nenhum registro</response>        
         [HttpGet("disponiveis")]
         public IActionResult LivrosDisponiveis()
         {

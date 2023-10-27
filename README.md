@@ -8,7 +8,7 @@ Após a manifestação de interesse nos livros, os usuários doadores conseguem 
 
 ## Critérios de Aceite
 
-Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link: [./Levantamento de Requisitos.docx]()
+Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link: [./Levantamento de Requisitos.docx](https://github.com/jorgelodev/QuerUmLivro/blob/1247c9a8b8d81bf0fca2be5d21cc2bafd50986ce/Levantamento%20de%20Requisitos.docx)
 
 ## Desenvolvimento 
 

@@ -8,16 +8,14 @@ Ele oferece uma forma de possibilitar o cadastro de livros para doação, e os i
 
 Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link [link](./Levantamento de Requisitos.docx)
 
-## Development 
+## Desenvolvimento 
 
 Para rodar esse projeto siga os passos abaixo:
 
-* Create a database and run the script inside SQL folder
-* Run de API project
-* Run de API Auth project (user: thiago and password: 102030)
-* Run de ADM project
+* Crie um banco de dados e rode o script
+* Rode o projeto da API
 
-### Database
+### Banco de Dados
 
 Esse projeto está usando SQL Server, você pode utilizar uma instância que tem instalado na sua máquina.
 

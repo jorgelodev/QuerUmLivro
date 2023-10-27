@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.Interfaces;
+using QuerUmLivro.Domain.Entities;
 using QuerUmLivro.Domain.Interfaces.Repositories;
 using QuerUmLivro.Domain.Interfaces.Services;
 using QuerUmLivro.Domain.Services;
@@ -15,22 +16,22 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
         {
             // Application
             #region AppService
-            //services.AddScoped(typeof(IAppServiceBase<>), typeof(AppServiceBase<>));
 
             services.AddScoped<ILivroAppService, LivroAppService>();
 
             #endregion
 
-            #region Domain
-            services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
+            #region Domain            
 
             services.AddScoped<ILivroService, LivroService>();
+            services.AddScoped<IInteresseService, InteresseService>();
             #endregion
 
             #region Data
             services.AddScoped(typeof(IRepositoryBase<>), typeof(EFRepository<>));
 
             services.AddScoped<ILivroRepository, LivroRepository>();
+            services.AddScoped<IInteresseRepository, InteresseRepository>();
             
             services.AddScoped<ApplicationDbContext>();
             #endregion

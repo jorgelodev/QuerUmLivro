@@ -2,14 +2,15 @@
 
 namespace QuerUmLivro.Application.DTOs.Livro
 {
-    public class AlteraLivroDto
+    public class CadastraLivroDto
     {
-        public AlteraLivroDto()
+        public CadastraLivroDto()
         {
             ValidationResult = new ValidationResult();
         }
-        public int Id { get; set; }
+
         public string Nome { get; set; }
+        public int DoadorId { get; set; }        
 
         public ValidationResult ValidationResult { get; set; }
     }

@@ -2,7 +2,13 @@
 
 namespace QuerUmLivro.Domain.Interfaces.Services
 {
-    public interface ILivroService : IServiceBase<Livro>
+    public interface ILivroService
     {
+        Livro Alterar(Livro livro);
+        Livro Cadastrar(Livro livro);
+        Livro Deletar(int id);
+        Livro ObterPorId(int id);    
+        IList<Livro> ObterPorDoador(int idUsuario);
+        IList<Livro> Disponiveis();
     }
 }

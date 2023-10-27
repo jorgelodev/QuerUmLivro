@@ -1,0 +1,51 @@
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+
+namespace QuerUmLivro.API.Controllers
+{
+    public class MainController : ControllerBase
+    {
+        protected ICollection<string> Erros = new List<string>();
+        protected ActionResult CustomResponse(object result = null)
+        {
+            if (OperacaoValida())
+                return Ok();
+
+            return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
+            {
+                {"Mensagem",Erros.ToArray() }
+            }));
+        }
+
+        protected ActionResult CustomResponse(ModelStateDictionary modelState)
+        {
+            var erros = modelState.Values.SelectMany(e => e.Errors);
+            foreach (var erro in erros)
+                AdicionarErroProcessamento(erro.ErrorMessage);
+
+            return CustomResponse();
+        }
+        protected bool OperacaoValida()
+        {
+            return !Erros.Any();
+        }       
+
+        protected void AdicionarErroProcessamento(ValidationResult validationResult)
+        {
+            foreach (var erros in validationResult.Errors)
+                AdicionarErroProcessamento(erros.ErrorMessage);
+        }
+
+        private void AdicionarErroProcessamento(string erro)
+        {
+            Erros.Add(erro);
+        }
+
+        protected OkObjectResult CadastroRealizado()
+        {
+            return base.Ok("Cadastro Realizado Com Sucesso");
+        }
+
+    }
+}

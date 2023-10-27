@@ -19,8 +19,14 @@ namespace QuerUmLivro.Infra.Data.Repositories
 
         public T Alterar(T entidade)
         {
-            
-            _dbSet.Update(entidade);
+            var existingEntity = _dbSet.Find(entidade.Id);
+
+            if (existingEntity != null)
+            {                
+                _dbSet.Entry(existingEntity).State = EntityState.Detached;
+            }
+
+            _context.Update(entidade);
             _context.SaveChanges();
 
             return entidade;

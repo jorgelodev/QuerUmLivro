@@ -12,7 +12,7 @@ Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no 
 
 Para rodar esse projeto siga os passos abaixo:
 
-* Abra o Package Manager Console, em "Default project:" selecione o projeto 3- Infra\3.1 - Data\QuerUmLivro.Infra.Data
+* Abra o Package Manager Console, em "Default project:" selecione o projeto QuerUmLivro.Infra.Data
 *  Execute o comando Update-Database
 * ![image](https://github.com/jorgelodev/QuerUmLivro/assets/63474859/a29ae54b-7614-4de2-85ab-52feb7c2df9c)
 ![image](https://github.com/jorgelodev/QuerUmLivro/assets/63474859/69299078-b621-4872-a53f-c1094b6be003)

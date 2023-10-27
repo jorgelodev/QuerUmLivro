@@ -79,7 +79,7 @@ namespace QuerUmLivro.Infra.Data.Migrations
                     b.HasOne("QuerUmLivro.Domain.Entities.Livro", "Livro")
                         .WithMany("Interesses")
                         .HasForeignKey("LivroId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Livro");

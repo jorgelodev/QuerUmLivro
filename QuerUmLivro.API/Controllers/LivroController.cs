@@ -51,7 +51,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="alteraLivroViewModel">ViewModel para alterar livro.</param>        
         /// <remarks>
         /// 
-        /// Informe o nome e id do livro para realizar a alteração do livro. 
+        /// Informe o nome e id do livro para realizar a alteração. 
         /// 
         /// </remarks>
         /// <response code="200">Alteração Realizada com sucesso</response>
@@ -138,7 +138,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="id">Id do livro para deleção.</param>        
         /// <remarks>
         /// 
-        /// Informe o nome e id do livro para realizar a deleção do livro. 
+        /// Informe o id do livro para realizar a deleção. 
         /// 
         /// </remarks>
         /// <response code="200">Deleção realizada com sucesso</response>
@@ -148,11 +148,11 @@ namespace QuerUmLivro.API.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var alteraLivroDto = _livroAppService.Deletar(id);
+            var livroDto = _livroAppService.Deletar(id);
 
-            if (!alteraLivroDto.ValidationResult.IsValid)
+            if (!livroDto.ValidationResult.IsValid)
 
-                AdicionarErroProcessamento(alteraLivroDto.ValidationResult);
+                AdicionarErroProcessamento(livroDto.ValidationResult);
 
             return CustomResponse();
 

@@ -18,6 +18,7 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
             #region AppService
 
             services.AddScoped<ILivroAppService, LivroAppService>();
+            services.AddScoped<IUsuarioAppService, UsuarioAppService>();
 
             #endregion
 
@@ -25,6 +26,7 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
 
             services.AddScoped<ILivroService, LivroService>();
             services.AddScoped<IInteresseService, InteresseService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
             #endregion
 
             #region Data
@@ -32,6 +34,7 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
 
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IInteresseRepository, InteresseRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             
             services.AddScoped<ApplicationDbContext>();
             #endregion

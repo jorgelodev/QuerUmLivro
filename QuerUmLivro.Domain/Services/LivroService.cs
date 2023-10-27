@@ -49,12 +49,18 @@ namespace QuerUmLivro.Domain.Services
 
         public Livro Deletar(int id)
         {
-            //entidade.ValidationResult = new LivroAtualizacaoValid(_livroRepository).Validate(entidade);
+            try
+            {
+                return _livroRepository.Deletar(id);
 
-            //if (!entidade.ValidationResult.IsValid)
-            //    return entidade;
+            }            
+            catch(Exception ex)
+            {
+                var livro = new Livro();
+                livro.ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("falhaExclusao", ex.Message));
 
-            return _livroRepository.Deletar(id);
+                return livro;
+            }
         }
 
         public Livro ObterPorId(int id)

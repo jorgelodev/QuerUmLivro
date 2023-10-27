@@ -49,8 +49,20 @@ namespace QuerUmLivro.Infra.Data.Repositories
         {
             var entidade = ObterPorId(id);
 
-            _dbSet.Remove(entidade);
-            _context.SaveChanges();
+            if (entidade == null)
+            {
+                throw new Exception("Registro não encontrado.");    
+            }
+
+            try
+            {
+                _dbSet.Remove(entidade);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw new Exception("Não é possível excluir. Registro está sendo utilizado.");
+            }
 
             return entidade;
         }

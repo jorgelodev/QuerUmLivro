@@ -31,3 +31,6 @@ Essa API foi desenvolvida utilizando utilizando as boas práticas do DDD, com to
 
 Esta API fornece documentação Swagger para seus endpoints.
 
+## Grupo 33
+Jorge - RM351049
+

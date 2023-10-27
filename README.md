@@ -8,7 +8,7 @@ Ele oferece uma forma de possibilitar o cadastro de livros para doação, e os i
 
 Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link [link](./Levantamento de Requisitos.docx)
 
-## Desenvolvimento 
+## Rodando o projeto 
 
 Para rodar esse projeto siga os passos abaixo:
 

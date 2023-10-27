@@ -17,7 +17,7 @@ Para rodar esse projeto você pode usar o Visual Studio. E seguir os passos abai
 * Abra o projeto no Visual Studio.
 * Abra o Package Manager Console, em "Default project:" selecione o projeto QuerUmLivro.Infra.Data
 * Execute o comando Update-Database
-* Após o término da execução do comando, Rode o projeto da API.
+* Após o término da execução do comando, rode o projeto da API.
 
 ### Banco de Dados
 

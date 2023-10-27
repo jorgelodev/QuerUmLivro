@@ -1,10 +1,10 @@
-# QuerUmLivro - Tech Challenge Fase 1
+# QuerUmLivro
 
 QuerUmLivro é um projeto desenvolvido como proposta para entrega do Tech Challenge Fase 1.
 
 Esse é um projeto de um portal para doação de livros.
-Ele oferece uma forma para o cadastro de livros para doação, e os interessados pelos livros manifestam interesse nesses livros.
-Após a manifestação de interesse nos livros, os usuários doadores conseguem escolher para quel será destinado a doação dos livros.
+Ele oferece uma forma para o cadastro de livros para doação, e os interessados pelos livros manifestem interesse nesses livros.
+Após a manifestação de interesse nos livros, os usuários doadores conseguem escolher para quem será destinado a doação dos livros.
 
 ## Critérios de Aceite
 

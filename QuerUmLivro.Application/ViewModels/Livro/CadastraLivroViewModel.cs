@@ -4,7 +4,5 @@
     {
         public string Nome { get; set; }
         public int DoadorId { get; set; }        
-    }
-
-    
+    }    
 }

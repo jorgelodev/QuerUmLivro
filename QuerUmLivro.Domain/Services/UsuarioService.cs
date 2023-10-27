@@ -51,15 +51,15 @@ namespace QuerUmLivro.Domain.Services
             try
             {
                 return _usuarioRepository.Deletar(id);
-                
+
             }
-            catch
+            catch (Exception ex)
             {
                 var usuario = new Usuario();
-                usuario.ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("falhaExclusao", "Usuário está sendo utilizado, não é possível excluir."));
+                usuario.ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("falhaExclusao", ex.Message));
 
                 return usuario;
-            }            
+            }
         }
 
         public Usuario ObterPorId(int id)

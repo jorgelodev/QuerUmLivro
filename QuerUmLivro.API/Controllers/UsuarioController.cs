@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.Interfaces;
 using QuerUmLivro.Application.ViewModels.Usuario;
 

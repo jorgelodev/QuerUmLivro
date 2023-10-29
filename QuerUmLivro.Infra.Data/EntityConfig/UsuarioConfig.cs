@@ -14,13 +14,20 @@ namespace QuerUmLivro.Infra.Data.EntityConfig
                 .HasColumnType("int")
                 .UseIdentityColumn();
             builder.Property(p => p.Nome).HasColumnType("varchar(100)");
-            builder.Property(p => p.Email).HasColumnType("varchar(100)");          
+            builder.Property(p => p.Email).HasColumnType("varchar(100)");
+
+            builder.HasMany(l => l.Interesses)
+                .WithOne(i => i.Interessado)
+                .HasForeignKey(l => l.InteressadoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(l => l.Livros)
+                .WithOne(i => i.Doador)
+                .HasForeignKey(l => l.DoadorId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Ignore(c => c.ValidationResult);
 
-            //builder.HasOne(p => p.Usuario)
-            //    .WithMany(u => u.Pedidos)
-            //    .HasPrincipalKey(u => u.Id);
         }
     }
 }

@@ -23,6 +23,10 @@ namespace QuerUmLivro.Infra.Data.EntityConfig
                 .WithMany(l => l.Interesses)
                 .HasPrincipalKey(i => i.Id);
 
+            builder.HasOne(i => i.Interessado)
+                .WithMany(l => l.Interesses)
+                .HasPrincipalKey(i => i.Id);
+
             builder.Ignore(c => c.ValidationResult);
         }
     }

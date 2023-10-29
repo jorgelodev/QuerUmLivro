@@ -27,7 +27,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="livroViewModel">ViewModel para cadastro de livro.</param>        
         /// <remarks>
         /// 
-        /// Informe o nome e id do doador para realizar o cadastro do livro. 
+        /// Informe o nome e id do usuário doador para realizar o cadastro do livro. 
         /// 
         /// </remarks>
         /// <response code="200">Cadastro Realizado com sucesso</response>
@@ -77,7 +77,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="id">Id do Livro.</param>        
         /// <remarks>
         /// 
-        /// Envia id do Livro para api.        
+        /// Envia id do livro para api.        
         /// 
         /// </remarks>
         /// <response code="200">Retorna sucesso com o livro localizado</response>
@@ -100,7 +100,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="id">Id do Doador.</param>        
         /// <remarks>
         /// 
-        /// Envia id do Doador para api.        
+        /// Envia id do usuário doador para api.        
         /// 
         /// </remarks>
         /// <response code="200">Retorna sucesso com uma lista com os livros encontrados, ou uma lista vazia caso não encontre nenhum registro</response>        
@@ -164,7 +164,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="interesseViewModel">ViewModel para manifestar interesse.</param>        
         /// <remarks>
         /// 
-        /// Informe o id do livro, id do interessado e justificativa para manifestar o interesse no livro. 
+        /// Informe o id do livro, id do usuário interessado e justificativa para manifestar o interesse no livro. 
         /// 
         /// </remarks>
         /// <response code="200">Manifestação registrada com sucesso</response>

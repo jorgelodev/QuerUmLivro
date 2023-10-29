@@ -14,8 +14,12 @@ namespace QuerUmLivro.Infra.Data.EntityConfig
                 .HasColumnType("int")
                 .UseIdentityColumn();
             builder.Property(p => p.Nome).HasColumnType("varchar(100)");
-            builder.Property(p => p.DoadorId);
             builder.Property(p => p.Disponivel);
+            builder.Property(p => p.DoadorId);
+
+            builder.HasOne(i => i.Doador)
+                .WithMany(l => l.Livros)
+                .HasPrincipalKey(i => i.Id);
 
             builder.HasMany(l => l.Interesses)
                 .WithOne(i => i.Livro)
@@ -24,11 +28,6 @@ namespace QuerUmLivro.Infra.Data.EntityConfig
 
             builder.Ignore(c => c.ValidationResult);
 
-
-
-            //builder.HasOne(p => p.Usuario)
-            //    .WithMany(u => u.Pedidos)
-            //    .HasPrincipalKey(u => u.Id);
         }
     }
 }

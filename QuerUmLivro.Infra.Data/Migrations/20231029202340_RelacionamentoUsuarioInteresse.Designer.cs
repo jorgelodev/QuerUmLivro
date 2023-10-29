@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuerUmLivro.Infra.Data.Context;
 
@@ -11,9 +12,11 @@ using QuerUmLivro.Infra.Data.Context;
 namespace QuerUmLivro.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231029202340_RelacionamentoUsuarioInteresse")]
+    partial class RelacionamentoUsuarioInteresse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,8 +76,6 @@ namespace QuerUmLivro.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DoadorId");
-
                     b.ToTable("Livro", (string)null);
                 });
 
@@ -118,25 +119,12 @@ namespace QuerUmLivro.Infra.Data.Migrations
 
             modelBuilder.Entity("QuerUmLivro.Domain.Entities.Livro", b =>
                 {
-                    b.HasOne("QuerUmLivro.Domain.Entities.Usuario", "Doador")
-                        .WithMany("Livros")
-                        .HasForeignKey("DoadorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Doador");
-                });
-
-            modelBuilder.Entity("QuerUmLivro.Domain.Entities.Livro", b =>
-                {
                     b.Navigation("Interesses");
                 });
 
             modelBuilder.Entity("QuerUmLivro.Domain.Entities.Usuario", b =>
                 {
                     b.Navigation("Interesses");
-
-                    b.Navigation("Livros");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,15 +8,17 @@ namespace QuerUmLivro.Domain.Services
     public class LivroService : ILivroService
     {
         private readonly ILivroRepository _livroRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        public LivroService(ILivroRepository livroRepository)
+        public LivroService(ILivroRepository livroRepository, IUsuarioRepository usuarioRepository)
         {
             _livroRepository = livroRepository;
+            _usuarioRepository = usuarioRepository;
         }
 
         public Livro Cadastrar(Livro livro)
         {
-            livro.ValidationResult = new LivroCadastroValid().Validate(livro);
+            livro.ValidationResult = new LivroCadastroValid(_usuarioRepository).Validate(livro);
 
             if (!livro.ValidationResult.IsValid)
                 return livro;
@@ -77,6 +79,11 @@ namespace QuerUmLivro.Domain.Services
         public IList<Livro> Disponiveis()
         {
             return _livroRepository.Buscar(l => l.Disponivel).ToList();
+        }
+
+        public ICollection<Livro> ObterComInteresse(int idDoador)
+        {
+            return _livroRepository.ObterComInteresse(idDoador).ToList();
         }
     }
 }

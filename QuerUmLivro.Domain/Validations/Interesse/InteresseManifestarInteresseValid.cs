@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using QuerUmLivro.Domain.Entities;
 using QuerUmLivro.Domain.Interfaces.Repositories;
+using QuerUmLivro.Domain.Validations.Interesses.Specifications;
 
 namespace QuerUmLivro.Domain.Validations.Interesses
 {
@@ -8,10 +9,12 @@ namespace QuerUmLivro.Domain.Validations.Interesses
     {
         private readonly IInteresseRepository _interesseRepository;
         private readonly ILivroRepository _livroRepository;
-        public InteresseManifestarInteresseValid(IInteresseRepository interesseRepository, ILivroRepository livroRepository)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public InteresseManifestarInteresseValid(IInteresseRepository interesseRepository, ILivroRepository livroRepository, IUsuarioRepository usuarioRepository)
         {
             _interesseRepository = interesseRepository;
             _livroRepository = livroRepository;
+            _usuarioRepository = usuarioRepository;
 
             RuleFor(i => i).Must(InteresseJustificativaTamanhoSpec).WithMessage("Justificativa é obrigatória e com máximo de 100 caracteres.");
             RuleFor(i => i).Must(InteresseDataSpec).WithMessage("Data inválida.");
@@ -19,6 +22,7 @@ namespace QuerUmLivro.Domain.Validations.Interesses
             RuleFor(i => i).Must(InteresseLivroSpec).WithMessage("Id livro deve ser informado.");
             RuleFor(i => i).Must(InteresseLivroExisteSpec).WithMessage("Livro não existe.");
             RuleFor(i => i).Must(InteresseInteressadoNaoManifestouSpec).WithMessage("Interessado já manifestou interesse nesse livro.");
+            RuleFor(l => l).Must(InteressadoExisteSpec).WithMessage("Interessado não existe. Informe um usuário cadastrado.");
         }
 
         private bool InteresseJustificativaTamanhoSpec(Interesse interesse)
@@ -48,6 +52,11 @@ namespace QuerUmLivro.Domain.Validations.Interesses
         {
             return new InteresseLivroExisteSpec(_livroRepository).IsSatisfiedBy(interesse);
         }
-        
+
+        private bool InteressadoExisteSpec(Interesse interesse)
+        {
+            return new InteresseInteressadoExisteSpec(_usuarioRepository).IsSatisfiedBy(interesse);
+        }
+
     }
 }

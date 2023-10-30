@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using QuerUmLivro.Application.DTOs.Interesse;
 using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Application.Interfaces;
 using QuerUmLivro.Domain.Entities;
@@ -65,11 +64,23 @@ namespace QuerUmLivro.Application.AppService
             return _mapper.Map<List<LivroDto>>(livros);
         }
 
-        public InteresseDto ManifestarInteresse(InteresseDto interesse)
+        ICollection<LivroDto> ILivroAppService.ObterPorDoador(int idUsuario)
         {
-            var interesseManifestado = _interesseService.ManifestarInteresse(_mapper.Map<Interesse>(interesse));
+            throw new NotImplementedException();
+        }
 
-            return _mapper.Map<InteresseDto>(interesseManifestado) ;
+        ICollection<LivroDto> ILivroAppService.Disponiveis()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<LivroComInteressesDto> ObterComInteresse(int idDoador)
+        {
+            var livros = _livroService
+                .ObterComInteresse(idDoador)
+                .Where(l => l.Disponivel).ToList();
+            var retorno = _mapper.Map<List<LivroComInteressesDto>>(livros);
+            return retorno;
         }
     }
 }

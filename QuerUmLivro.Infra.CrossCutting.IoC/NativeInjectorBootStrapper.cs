@@ -19,6 +19,7 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
 
             services.AddScoped<ILivroAppService, LivroAppService>();
             services.AddScoped<IUsuarioAppService, UsuarioAppService>();
+            services.AddScoped<IInteresseAppService, InteresseAppService>();
 
             #endregion
 

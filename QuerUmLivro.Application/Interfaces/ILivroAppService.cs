@@ -7,10 +7,12 @@ namespace QuerUmLivro.Application.Interfaces
     {
         LivroDto Cadastrar(CadastraLivroDto livroDto);
         AlteraLivroDto Alterar(AlteraLivroDto alteraLivroDto);
-        IList<LivroDto> ObterPorDoador(int idUsuario);        
+        ICollection<LivroDto> ObterPorDoador(int idUsuario);        
         LivroDto ObterPorId(int id);
         LivroDto Deletar(int id);
-        IList<LivroDto> Disponiveis();
-        InteresseDto ManifestarInteresse(InteresseDto interesse);
+        ICollection<LivroDto> Disponiveis();
+        ICollection<LivroComInteressesDto> ObterComInteresse(int idDoador);
+
+
     }
 }

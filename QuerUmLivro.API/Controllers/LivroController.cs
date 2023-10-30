@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using QuerUmLivro.Application.DTOs.Interesse;
+using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Application.Interfaces;
-using QuerUmLivro.Application.ViewModels.Interesse;
 using QuerUmLivro.Application.ViewModels.Livro;
 
 namespace QuerUmLivro.API.Controllers
@@ -159,27 +158,23 @@ namespace QuerUmLivro.API.Controllers
         }
 
         /// <summary>
-        /// Manifestar interesse em um determinado livro.
+        /// Consulta todos os livros com seus respectivos interesses.
         /// </summary>
-        /// <param name="interesseViewModel">ViewModel para manifestar interesse.</param>        
+        /// <param name="id">Id do usuário Doador.</param>        
         /// <remarks>
         /// 
-        /// Informe o id do livro, id do usuário interessado e justificativa para manifestar o interesse no livro. 
+        /// Envia id do usuário do doador para api.        
         /// 
         /// </remarks>
-        /// <response code="200">Manifestação registrada com sucesso</response>
-        /// <response code="400">Manifestação não realizada, é retornado mensagem com o(s) motivo(s).</response>
-        [HttpPost("manifestar-interesse")]
-        public IActionResult ManifestarInteresse(InteresseViewModel interesseViewModel)
+        /// <response code="200">Retorna sucesso com uma lista com os livros e suas solicitações de interesse, ou uma lista vazia caso não encontre nenhum registro</response>        
+        [HttpGet("doador/{id}")]
+        public IActionResult ObterComInteresse([FromRoute] int id)
         {
-            if (!ModelState.IsValid) return CustomResponse(ModelState);
+            var livrosViewModel = _mapper.Map<ICollection<LivroComInteressesViewModel>>(_livroAppService.ObterComInteresse(id));
 
-            var interesseManifestado = _livroAppService.ManifestarInteresse(_mapper.Map<InteresseDto>(interesseViewModel));
+            return Ok(livrosViewModel);
 
-            if (!interesseManifestado.ValidationResult.IsValid)
-                AdicionarErroProcessamento(interesseManifestado.ValidationResult);
-
-            return CustomResponse();
         }
+
     }
 }

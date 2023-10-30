@@ -10,5 +10,6 @@ namespace QuerUmLivro.Domain.Interfaces.Services
         Livro ObterPorId(int id);    
         IList<Livro> ObterPorDoador(int idUsuario);
         IList<Livro> Disponiveis();
+        ICollection<Livro> ObterComInteresse(int idDoador);            
     }
 }

@@ -6,7 +6,7 @@ using QuerUmLivro.Application.ViewModels.Usuario;
 namespace QuerUmLivro.API.Controllers
 {
     [ApiController]
-    [Route("Usuario")]
+    [Route("usuario")]
     public class UsuarioController : MainController
     {
         private readonly IUsuarioAppService _usuarioAppService;

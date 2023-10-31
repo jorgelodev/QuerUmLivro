@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Application.Interfaces;
 using QuerUmLivro.Application.ViewModels.Livro;
@@ -8,7 +7,7 @@ using QuerUmLivro.Application.ViewModels.Livro;
 namespace QuerUmLivro.API.Controllers
 {
     [ApiController]
-    [Route("Livro")]
+    [Route("livro")]
     public class LivroController : MainController
     {
         private readonly ILivroAppService _livroAppService;

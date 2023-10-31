@@ -7,7 +7,7 @@ using QuerUmLivro.Application.ViewModels.Interesse;
 namespace QuerUmLivro.API.Controllers
 {
     [ApiController]
-    [Route("Interesse")]
+    [Route("interesse")]
     public class InteresseController : MainController
     {
         private readonly IInteresseAppService _intresseAppService;

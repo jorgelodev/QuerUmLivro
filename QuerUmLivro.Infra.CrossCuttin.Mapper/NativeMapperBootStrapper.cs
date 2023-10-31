@@ -17,8 +17,7 @@ namespace QuerUmLivro.Infra.CrossCuttin.Mapper
             CreateMap<AlteraLivroViewModel, AlteraLivroDto>().ReverseMap();
             CreateMap<CadastraLivroViewModel, CadastraLivroDto>().ReverseMap();
             CreateMap<LivroComInteressesDto, LivroComInteressesViewModel>().ReverseMap();
-            CreateMap<AprovarInteresseDto, AprovarInteresseViewModel>().ReverseMap();
-            //.ForMember(viewModel => viewModel.Interesses, opt => opt.MapFrom(dto => dto.Interesses));
+            CreateMap<AprovarInteresseDto, AprovarInteresseViewModel>().ReverseMap();            
 
             CreateMap<InteresseViewModel, InteresseDto>().ReverseMap();
             CreateMap<ManifestarInteresseViewModel, InteresseDto>().ReverseMap();

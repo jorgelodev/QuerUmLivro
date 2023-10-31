@@ -1,12 +1,12 @@
-# PRIVATE!!!
-
 # QuerUmLivro?!
 
 QuerUmLivro é um projeto desenvolvido como proposta para entrega do Tech Challenge Fase 1.
 
 Esse é um projeto de um portal para doação de livros.
-Ele oferece uma forma para o cadastro de livros para doação, e os interessados pelos livros manifestem interesse nesses livros.
-Após a manifestação de interesse nos livros, os usuários doadores conseguem escolher para quem será destinado a doação dos livros.
+O portal oferece a possibilidade de cadastrar livros para doação, para que posteriormente os interessados pelos livros manifestem interesse nesses livros. 
+Quando um usuário cadastra um livro, ele passa a ser o doador desse livro.
+Os usuários cadastrados podem manifestar interesse nos livros. Após a manifestação de interesse nos livros, os usuários doadores conseguem escolher para quem será destinada a doação dos livros através de uma aprovação de interesses.
+
 
 ## Critérios de Aceite
 

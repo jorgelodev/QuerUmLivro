@@ -10,7 +10,7 @@ Os usuários cadastrados podem manifestar interesse nos livros. Após a manifest
 
 ## Critérios de Aceite
 
-Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link: [./Levantamento de Requisitos.docx](https://github.com/jorgelodev/QuerUmLivro/blob/1247c9a8b8d81bf0fca2be5d21cc2bafd50986ce/Levantamento%20de%20Requisitos.docx)
+Os critérios de aceite desse projeto se encontram na raiz desse projeto, ou no link: [./Levantamento de Requisitos.docx](https://github.com/jorgelodev/QuerUmLivro/blob/4edb0f46d13c3db6fa80d3d37b17b814d32a4131/Levantamento%20de%20Requisitos.docx)
 
 ## Desenvolvimento 
 

@@ -12,8 +12,8 @@ using QuerUmLivro.Infra.Data.Context;
 namespace QuerUmLivro.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231027232214_Usuario")]
-    partial class Usuario
+    [Migration("20231031012640_CriacaoBanco")]
+    partial class CriacaoBanco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,8 @@ namespace QuerUmLivro.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("InteressadoId");
+
                     b.HasIndex("LivroId");
 
                     b.ToTable("Interesse", (string)null);
@@ -73,6 +75,8 @@ namespace QuerUmLivro.Infra.Data.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DoadorId");
 
                     b.ToTable("Livro", (string)null);
                 });
@@ -98,18 +102,44 @@ namespace QuerUmLivro.Infra.Data.Migrations
 
             modelBuilder.Entity("QuerUmLivro.Domain.Entities.Interesse", b =>
                 {
+                    b.HasOne("QuerUmLivro.Domain.Entities.Usuario", "Interessado")
+                        .WithMany("Interesses")
+                        .HasForeignKey("InteressadoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("QuerUmLivro.Domain.Entities.Livro", "Livro")
                         .WithMany("Interesses")
                         .HasForeignKey("LivroId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.Navigation("Interessado");
+
                     b.Navigation("Livro");
                 });
 
             modelBuilder.Entity("QuerUmLivro.Domain.Entities.Livro", b =>
                 {
+                    b.HasOne("QuerUmLivro.Domain.Entities.Usuario", "Doador")
+                        .WithMany("Livros")
+                        .HasForeignKey("DoadorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Doador");
+                });
+
+            modelBuilder.Entity("QuerUmLivro.Domain.Entities.Livro", b =>
+                {
                     b.Navigation("Interesses");
+                });
+
+            modelBuilder.Entity("QuerUmLivro.Domain.Entities.Usuario", b =>
+                {
+                    b.Navigation("Interesses");
+
+                    b.Navigation("Livros");
                 });
 #pragma warning restore 612, 618
         }

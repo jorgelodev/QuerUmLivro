@@ -9,15 +9,12 @@ namespace QuerUmLivro.Application.AppService
     public class LivroAppService : ILivroAppService
     {
         private readonly ILivroService _livroService;
-        private readonly IInteresseService _interesseService;
         private readonly IMapper _mapper;
 
         public LivroAppService(
-            ILivroService livroService, 
-            IInteresseService interesseService, 
+            ILivroService livroService,           
             IMapper mapper)
-        {
-            _interesseService = interesseService;
+        {   
             _livroService = livroService;
             _mapper = mapper;
         }
@@ -50,30 +47,19 @@ namespace QuerUmLivro.Application.AppService
             return _mapper.Map<LivroDto>(livro);
         }
 
-        public IList<LivroDto> ObterPorDoador(int idUsuario)
+        public ICollection<LivroDto> ObterPorDoador(int idUsuario)
         {
             var livros = _livroService.ObterPorDoador(idUsuario);
 
-            return _mapper.Map<List<LivroDto>>(livros);
+            return _mapper.Map<ICollection<LivroDto>>(livros);
         }
 
-        public IList<LivroDto> Disponiveis()
+        public ICollection<LivroDto> Disponiveis()
         {
             var livros = _livroService.Disponiveis();
 
-            return _mapper.Map<List<LivroDto>>(livros);
+            return _mapper.Map<ICollection<LivroDto>>(livros);
         }
-
-        ICollection<LivroDto> ILivroAppService.ObterPorDoador(int idUsuario)
-        {
-            throw new NotImplementedException();
-        }
-
-        ICollection<LivroDto> ILivroAppService.Disponiveis()
-        {
-            throw new NotImplementedException();
-        }
-
         public ICollection<LivroComInteressesDto> ObterComInteresse(int idDoador)
         {
             var livros = _livroService

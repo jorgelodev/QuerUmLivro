@@ -40,12 +40,7 @@ namespace QuerUmLivro.API.Controllers
         private void AdicionarErroProcessamento(string erro)
         {
             Erros.Add(erro);
-        }
-
-        protected OkObjectResult CadastroRealizado()
-        {
-            return base.Ok("Cadastro Realizado Com Sucesso");
-        }
+        }       
 
     }
 }

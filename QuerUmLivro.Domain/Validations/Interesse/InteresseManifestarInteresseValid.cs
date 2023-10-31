@@ -2,6 +2,7 @@
 using QuerUmLivro.Domain.Entities;
 using QuerUmLivro.Domain.Interfaces.Repositories;
 using QuerUmLivro.Domain.Validations.Interesses.Specifications;
+using QuerUmLivro.Domain.Validations.Livros.Specifications;
 
 namespace QuerUmLivro.Domain.Validations.Interesses
 {
@@ -23,6 +24,9 @@ namespace QuerUmLivro.Domain.Validations.Interesses
             RuleFor(i => i).Must(InteresseLivroExisteSpec).WithMessage("Livro não existe.");
             RuleFor(i => i).Must(InteresseInteressadoNaoManifestouSpec).WithMessage("Interessado já manifestou interesse nesse livro.");
             RuleFor(l => l).Must(InteressadoExisteSpec).WithMessage("Interessado não existe. Informe um usuário cadastrado.");
+            RuleFor(l => l).Must(LivroDisponivelSpec).WithMessage("Livro não está mais disponível.");
+            RuleFor(l => l).Must(InteressadoNaoEhDonoSpec).WithMessage("Dono do livro não pode manifestar interesse no próprio livro.");
+
         }
 
         private bool InteresseJustificativaTamanhoSpec(Interesse interesse)
@@ -57,6 +61,14 @@ namespace QuerUmLivro.Domain.Validations.Interesses
         {
             return new InteresseInteressadoExisteSpec(_usuarioRepository).IsSatisfiedBy(interesse);
         }
+        private bool LivroDisponivelSpec(Interesse interesse)
+        {
+            return new LivroDisponivelSpec().IsSatisfiedBy(interesse.Livro);
+        }private bool InteressadoNaoEhDonoSpec(Interesse interesse)
+        {
+            return new InteresseInteressadoNaoEhDonoSpec().IsSatisfiedBy(interesse);
+        }
+        
 
     }
 }

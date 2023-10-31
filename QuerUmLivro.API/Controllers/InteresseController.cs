@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.DTOs.Interesse;
-using QuerUmLivro.Application.DTOs.Livro;
 using QuerUmLivro.Application.Interfaces;
 using QuerUmLivro.Application.ViewModels.Interesse;
-using QuerUmLivro.Application.ViewModels.Livro;
 
 namespace QuerUmLivro.API.Controllers
 {
@@ -25,7 +22,7 @@ namespace QuerUmLivro.API.Controllers
         /// <summary>
         /// Manifestar interesse em um determinado livro.
         /// </summary>
-        /// <param name="interesseViewModel">ViewModel para manifestar interesse.</param>        
+        /// <param name="manifestarInteresseViewModel">ViewModel para manifestar interesse.</param>        
         /// <remarks>
         /// 
         /// Informe o id do livro, id do usuário interessado e justificativa para manifestar o interesse no livro. 
@@ -34,11 +31,11 @@ namespace QuerUmLivro.API.Controllers
         /// <response code="200">Manifestação registrada com sucesso</response>
         /// <response code="400">Manifestação não realizada, é retornado mensagem com o(s) motivo(s).</response>
         [HttpPost]
-        public IActionResult ManifestarInteresse(InteresseViewModel interesseViewModel)
+        public IActionResult ManifestarInteresse(ManifestarInteresseViewModel manifestarInteresseViewModel)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var interesseManifestado = _intresseAppService.ManifestarInteresse(_mapper.Map<InteresseDto>(interesseViewModel));
+            var interesseManifestado = _intresseAppService.ManifestarInteresse(_mapper.Map<InteresseDto>(manifestarInteresseViewModel));
 
             if (!interesseManifestado.ValidationResult.IsValid)
                 AdicionarErroProcessamento(interesseManifestado.ValidationResult);
@@ -46,19 +43,17 @@ namespace QuerUmLivro.API.Controllers
             return CustomResponse();
         }
 
-
-
         /// <summary>
-        /// Aprova o interesse.
+        /// Doador realiza a aprovação do interesse.
         /// </summary>
-        /// <param name="aprovaInteresseViewModel">ViewModel para alterar livro.</param>        
+        /// <param name="aprovaInteresseViewModel">ViewModel para aprovar interesse.</param>        
         /// <remarks>
         /// 
-        /// Informe o nome e id do livro para realizar a alteração. 
+        /// Informe id do interesse e id do doador que está aprovando o interesse. 
         /// 
         /// </remarks>
-        /// <response code="200">Alteração Realizada com sucesso</response>
-        /// <response code="400">Alteração não realizada, é retornado mensagem com o(s) motivo(s).</response>
+        /// <response code="200">Aprovação Realizada com sucesso</response>
+        /// <response code="400">Aprovação não realizada, é retornado mensagem com o(s) motivo(s).</response>
         [HttpPut]
         public IActionResult AprovarInteresse(AprovarInteresseViewModel aprovaInteresseViewModel)
         {

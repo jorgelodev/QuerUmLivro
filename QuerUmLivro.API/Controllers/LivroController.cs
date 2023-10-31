@@ -26,7 +26,7 @@ namespace QuerUmLivro.API.Controllers
         /// <param name="livroViewModel">ViewModel para cadastro de livro.</param>        
         /// <remarks>
         /// 
-        /// Informe o nome e id do usuário doador para realizar o cadastro do livro. 
+        /// Informe o nome do livro e o id do usuário doador para realizar o cadastro do livro. 
         /// 
         /// </remarks>
         /// <response code="200">Cadastro Realizado com sucesso</response>
@@ -117,7 +117,7 @@ namespace QuerUmLivro.API.Controllers
         /// </summary>        
         /// <remarks>
         /// 
-        /// Lista todos os livros que estão disponíveis para solicitar interesse.
+        /// Lista todos os livros que estão disponíveis para manifestar interesse.
         /// 
         /// </remarks>
         /// <response code="200">Retorna sucesso com uma lista com os livros encontrados, ou uma lista vazia caso não encontre nenhum registro</response>        
@@ -158,15 +158,16 @@ namespace QuerUmLivro.API.Controllers
         }
 
         /// <summary>
-        /// Consulta todos os livros com seus respectivos interesses.
+        /// Consulta todos os livros disponíveis, de um determinado doador, que já possuírem interesse cadastrado. 
+        /// E para cada livro uma lista dos interesses já manifestados.
         /// </summary>
         /// <param name="id">Id do usuário Doador.</param>        
         /// <remarks>
         /// 
-        /// Envia id do usuário do doador para api.        
+        /// Envia id do usuário doador para api.        
         /// 
         /// </remarks>
-        /// <response code="200">Retorna sucesso com uma lista com os livros e suas solicitações de interesse, ou uma lista vazia caso não encontre nenhum registro</response>        
+        /// <response code="200">Retorna sucesso com uma lista dos livros e suas solicitações de interesse, ou uma lista vazia caso não encontre nenhum registro</response>        
         [HttpGet("doador/{id}")]
         public IActionResult ObterComInteresse([FromRoute] int id)
         {

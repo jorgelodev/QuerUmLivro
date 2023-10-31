@@ -24,7 +24,7 @@ namespace QuerUmLivro.Application.AppService
 
         public AprovarInteresseDto AprovarInteresse(AprovarInteresseDto aprovarInteresseDto)
         {
-            var interesseAprovado = _interesseService.AprovarInteresse(_mapper.Map<Interesse>(aprovarInteresseDto));
+            var interesseAprovado = _interesseService.AprovarInteresse(_mapper.Map<Interesse>(aprovarInteresseDto), aprovarInteresseDto.DoadorId);
             
             return _mapper.Map<AprovarInteresseDto>(interesseAprovado);
         }

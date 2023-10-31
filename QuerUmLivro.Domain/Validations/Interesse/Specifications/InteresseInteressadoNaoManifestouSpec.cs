@@ -1,5 +1,4 @@
-﻿
-using QuerUmLivro.Domain.Entities;
+﻿using QuerUmLivro.Domain.Entities;
 using QuerUmLivro.Domain.Interfaces.Repositories;
 using QuerUmLivro.Domain.Interfaces.Specifications;
 

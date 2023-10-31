@@ -21,6 +21,7 @@ namespace QuerUmLivro.Infra.CrossCuttin.Mapper
             //.ForMember(viewModel => viewModel.Interesses, opt => opt.MapFrom(dto => dto.Interesses));
 
             CreateMap<InteresseViewModel, InteresseDto>().ReverseMap();
+            CreateMap<ManifestarInteresseViewModel, InteresseDto>().ReverseMap();
 
             CreateMap<UsuarioViewModel, UsuarioDto>().ReverseMap();
             CreateMap<AlteraUsuarioViewModel, AlteraUsuarioDto>().ReverseMap();

@@ -13,32 +13,52 @@ namespace QuerUmLivro.Domain.Services
 
         public InteresseService(
             IInteresseRepository interesseRepository, 
-            ILivroRepository livrRepository,
+            ILivroRepository livroRepository,
             IUsuarioRepository usuarioRepository)
         {
             _interesseRepository = interesseRepository;
-            _livroRepository = livrRepository;
+            _livroRepository = livroRepository;
             _usuarioRepository = usuarioRepository;
         }
 
-        public Interesse AprovarInteresse(Interesse interesse)
+        public Interesse AprovarInteresse(Interesse interesse, int idDoador)
         {
-            interesse = _interesseRepository.ObterPorId(interesse.Id);
-            var livro = _livroRepository.ObterPorId(interesse.LivroId);
+            var interesseEncontrado = _interesseRepository.ObterPorId(interesse.Id);
             
-            livro.Disponivel = false;
-            
-            interesse.Aprovado = true;
+            if (interesseEncontrado == null)
+            {
+                interesse.ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("naoEncontrado", "Interesse não encontrado"));
+                return interesse;
+            }            
 
-             _interesseRepository.Alterar(interesse);
-            _livroRepository.Alterar(livro);
+            interesseEncontrado.Livro = _livroRepository.ObterPorId(interesseEncontrado.LivroId);
 
-            return interesse;
+            interesseEncontrado.ValidationResult = new InteresseAprovarInteresseValid(new Usuario() {  Id = idDoador }).Validate(interesseEncontrado);
+
+            if (!interesseEncontrado.ValidationResult.IsValid)
+                return interesseEncontrado;
+
+
+            interesseEncontrado.Livro.Disponivel = false;
+
+            interesseEncontrado.Aprovado = true;
+
+             _interesseRepository.Alterar(interesseEncontrado);
+            _livroRepository.Alterar(interesseEncontrado.Livro);
+
+            return interesseEncontrado;
         }
 
         public Interesse ManifestarInteresse(Interesse interesse)
         {
             interesse.Data = DateTime.Now;
+            interesse.Livro = _livroRepository.ObterPorId(interesse.LivroId);
+
+            if (interesse.Livro == null)
+            {
+                interesse.ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("naoEncontrado", "Livro não encontrado"));
+                return interesse;
+            }
 
             interesse.ValidationResult = new InteresseManifestarInteresseValid(_interesseRepository,_livroRepository, _usuarioRepository).Validate(interesse);
 

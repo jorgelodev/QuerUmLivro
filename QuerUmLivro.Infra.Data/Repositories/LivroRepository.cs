@@ -11,6 +11,7 @@ namespace QuerUmLivro.Infra.Data.Repositories
 
         public LivroRepository(ApplicationDbContext context) : base(context)
         {
+
         }
 
         public ICollection<Livro> ObterComInteresse(int idDoador)

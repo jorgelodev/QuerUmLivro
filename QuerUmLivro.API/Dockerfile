@@ -5,11 +5,9 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-ENV ASPNETCORE_URLS=http://+:8000;
-ENV ASPNETCORE_ENVIROMENT=Development
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-#ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["QuerUmLivro.API/QuerUmLivro.API.csproj", "QuerUmLivro.API/"]
 COPY ["QuerUmLivro.Application/QuerUmLivro.Application.csproj", "QuerUmLivro.Application/"]
@@ -23,7 +21,7 @@ WORKDIR "/src/QuerUmLivro.API"
 RUN dotnet build "./QuerUmLivro.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-#ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./QuerUmLivro.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final

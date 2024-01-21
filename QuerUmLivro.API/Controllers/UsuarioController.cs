@@ -39,7 +39,8 @@ namespace QuerUmLivro.API.Controllers
             if (!usuarioCadastrado.ValidationResult.IsValid)
                 AdicionarErroProcessamento(usuarioCadastrado.ValidationResult);
 
-            return CustomResponse();
+            return Ok(usuarioCadastrado);
+            
         }
 
         /// <summary>

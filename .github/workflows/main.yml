@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v5.1.0
         with:
           context: .
-          tags: 'jorgeoliveira/fiap-githubactions:latest'
+          tags: 'jorgeoliveira/techchallenge-f2:latest'
           push: true
           
 

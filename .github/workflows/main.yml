@@ -8,10 +8,10 @@ jobs:
     name: Job para gerar o build, gerar imagem e publicar imagem no Docker Hub.
     runs-on: ubuntu-latest  
     steps:   
-      - name: Realiza Checkout do código fonte
+      - name: Checkout do código fonte
         uses: actions/checkout@v3
         
-      - name: Realiza o Login no Docker Hub
+      - name: Login no Docker Hub
         uses: docker/login-action@v3.0.0
         with:            
           username: 'jorgeoliveira'        

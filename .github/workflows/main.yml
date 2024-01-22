@@ -1,20 +1,13 @@
-name: meu primeiro fluxo de trabalho
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+name: WorkFlow - Tech Challenge F2
+on:  
+  # Dispara o workflow quando realizar push na branch master
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-
 jobs:
   job01:
     name: Executando o Job de Teste
     runs-on: ubuntu-latest  
-    steps:
-      - name: Step 1
-        uses: actions/checkout@v3
-      
+    steps:      
       - name: Docker Login  
         uses: docker/login-action@v3.0.0
         with:            

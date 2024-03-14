@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using QuerUmLivro.Application.AppService;
 using QuerUmLivro.Application.Interfaces;
-using QuerUmLivro.Domain.Entities;
+using QuerUmLivro.Application.Notificadores;
 using QuerUmLivro.Domain.Interfaces.Repositories;
 using QuerUmLivro.Domain.Interfaces.Services;
 using QuerUmLivro.Domain.Services;
@@ -20,6 +20,8 @@ namespace QuerUmLivro.Infra.CrossCutting.IoC
             services.AddScoped<ILivroAppService, LivroAppService>();
             services.AddScoped<IUsuarioAppService, UsuarioAppService>();
             services.AddScoped<IInteresseAppService, InteresseAppService>();
+            
+            services.AddScoped<INotificador, Mensageria>();
 
             #endregion
 
